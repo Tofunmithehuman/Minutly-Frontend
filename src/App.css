@@ -4,18 +4,99 @@
   src: url("/fonts/QurovaDEMO-Medium-BF67a5c6382651c.otf") format("opentype");
 }
 
-@import "tailwindcss";  
+@import "tailwindcss";
 
 html {
   font-family: "Inter", sans-serif;
-  background-color: #000000;
+}
+
+/* Dark theme (default) */
+:root[data-theme="dark"] {
+  --background: #000000; /* Black background */
+  --text-color: #ffffff; /* White text */
+  --primary: #bf95f9; /* Your primary color (purple) */
+  --primary-rgb: 191, 149, 249; /* RGB equivalent for opacity */
+  --secondary: #18181b; /* Your secondary color (dark gray) */
+  --text-muted: rgba(255, 255, 255, 0.7); /* Muted white text */
+  --border-color: #bf95f9; /* Border color same as primary */
+}
+
+/* Light theme */
+:root[data-theme="light"] {
+  --background: white; /* White background */
+  --text-color: #000000; /* Black text */
+  --primary: #bf95f9; /* Same primary color for consistency */
+  --primary-rgb: 191, 149, 249; /* RGB equivalent for opacity */
+  --secondary: #bf95f9; /* Light gray for secondary background */
+  --text-muted: rgba(0, 0, 0, 0.7); /* Muted black text */
+  --border-color: #bf95f9; /* Border color same as primary */
+}
+
+/* Apply theme variables globally */
+body {
+  background-color: var(--background);
+  color: var(--text-color);
 }
 
 .QurovaDEMO {
   font-family: "QurovaDEMO", sans-serif;
 }
 
-@theme {
-  --color-primary: #bf95f9;
-  --color-secondary: #18181b;
+/* Utility classes for theme consistency */
+.text-primary {
+  color: var(--primary);
+}
+
+.bg-primary {
+  background-color: var(--primary);
+  color: #000000; /* Black text on primary background for readability */
+}
+
+.bg-secondary {
+  background-color: var(--secondary);
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+.border-primary {
+  border-color: var(--border-color);
+}
+
+.bg-primary\/10 {
+  background-color: rgba(var(--primary-rgb), 0.1);
+}
+
+.border-primary\/30 {
+  border-color: rgba(var(--primary-rgb), 0.3);
+}
+
+.border-primary\/40 {
+  border-color: rgba(var(--primary-rgb), 0.4);
+}
+
+.bg-black\/30 {
+  background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent black, adjust for light theme if needed */
+}
+
+/* Component-specific styles */
+.Navigation {
+  background-color: var(--background);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.Navigation a,
+.Footer a,
+.Footer p,
+.Hero h1,
+.Hero h4,
+section h1,
+section h4,
+section p {
+  color: var(--text-color);
+}
+
+.Navigation .theme-toggle svg {
+  color: var(--primary);
 }

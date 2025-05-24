@@ -1,12 +1,18 @@
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { Sun, Moon } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 function Navigation() {
-    const [theme, setTheme] = useState('dark');
+    // Initialize theme from localStorage or default to 'dark'
+    const [theme, setTheme] = useState(() => {
+        return localStorage.getItem('theme') || 'dark';
+    });
 
     useEffect(() => {
+        // Apply theme to document
         document.documentElement.setAttribute('data-theme', theme);
+        // Save theme to localStorage
+        localStorage.setItem('theme', theme);
     }, [theme]);
 
     const toggleTheme = () => {
@@ -14,13 +20,14 @@ function Navigation() {
     };
 
     return (
-        <div className="Navigation bg-black border-b border-primary fixed top-0 left-0 right-0 z-50">
+        <div className="Navigation border-b border-primary fixed top-0 left-0 right-0 z-50">
             <div className="max-w-screen-2xl mx-auto">
                 <div className="p-4 flex items-center justify-between">
                     <div>
-                        <Link to="/" className="QurovaDEMO text-white text-base sm:text-lg ">MINUTLY.AI</Link>
+                        <Link to="/" className="QurovaDEMO text-base sm:text-lg">
+                            MINUTLY.AI
+                        </Link>
                     </div>
-
 
                     <div className="flex items-center gap-4">
                         <div className="theme-toggle cursor-pointer" onClick={toggleTheme}>
@@ -31,7 +38,12 @@ function Navigation() {
                             )}
                         </div>
 
-                        <Link to="/dashboard" className="bg-primary py-1 px-2 sm:py-2 sm:px-4 rounded font-medium text-sm sm:text-base">Try Free</Link>
+                        <Link
+                            to="/dashboard"
+                            className="bg-primary py-1 px-2 sm:py-2 sm:px-4 rounded font-medium text-sm sm:text-base"
+                        >
+                            Try Free
+                        </Link>
                     </div>
                 </div>
             </div>
