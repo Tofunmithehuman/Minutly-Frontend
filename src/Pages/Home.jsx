@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
-import Navigation from '../components/Navigation';
-import Footer from '../components/Footer';
+import Navigation from '../Components/Navigation';
+import Footer from '../Components/Footer';
 import { Link } from 'react-router-dom';
 import { Check, Coffee, Users, MessageSquare, PanelsTopLeft } from 'lucide-react';
 
