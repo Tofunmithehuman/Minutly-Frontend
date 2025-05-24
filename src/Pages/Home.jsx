@@ -139,11 +139,7 @@ function Home() {
 
 
                 <section>
-                    <motion.div className='px-5 py-20 sm:py-40 flex flex-col items-center justify-center'
-                        variants={sectionVariants}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, amount: 0.7 }}>
+                    <div className='px-5 py-20 sm:py-40 flex flex-col items-center justify-center'>
                         <div>
                             <h1 className='text-white text-2xl text-center font-semibold'>Who Uses Minutly</h1>
                             <h4 className='text-white/70 text-sm text-center mt-2'>Perfect for podcasters, teams, and content creators</h4>
@@ -161,7 +157,7 @@ function Home() {
                                 </div>
                             ))}
                         </div>
-                    </motion.div>
+                    </div>
                 </section>
 
                 <section>
